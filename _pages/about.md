@@ -8,7 +8,7 @@ permalink: /about/
 
 <div class="section-card">
 <div class="pi-card">
-<img src="{{ site.photo | prepend: '/images/' | relative_url }}" class="pi-photo" alt="{{ site.name }}" width="160" height="160">
+<img src="{{ site.photo | prepend: '/images/' | relative_url }}" class="pi-photo" alt="{{ site.name }}" width="220" height="270">
 <div>
 <h2 class="pi-name">{{ site.name }}</h2>
 <p style="font-style: italic; color: var(--text-secondary);">{{ site.title }}, {{ site.institution }}</p>
@@ -18,6 +18,8 @@ permalink: /about/
 {% if site.links.google_scholar and site.links.google_scholar != "" %}<a href="{{ site.links.google_scholar }}" class="icon-link" title="Google Scholar" aria-label="Google Scholar">{% include icon.html name="google-scholar" %}</a>{% endif %}
 {% if site.links.github and site.links.github != "" %}<a href="{{ site.links.github }}" class="icon-link" title="GitHub" aria-label="GitHub">{% include icon.html name="github" %}</a>{% endif %}
 {% if site.links.researchgate and site.links.researchgate != "" %}<a href="{{ site.links.researchgate }}" class="icon-link" title="ResearchGate" aria-label="ResearchGate">{% include icon.html name="researchgate" %}</a>{% endif %}
+{% if site.links.afrobarometer and site.links.afrobarometer != ""%}<a href="{{ site.links.afrobarometer }}" class="fas fa-globe icon-pad-right" title="Afrobarometer" aria-label="Afrobarometer">{% include icon.html name="afrobarometer" %}</a>{% endif %}
+
 </div>
 {% if site.data.pi[0].education %}
 <ul style="margin-top: var(--space-4);">
@@ -30,35 +32,36 @@ permalink: /about/
 </div>
 </div>
 
-{% if site.data.grants %}
-<div class="section-card">
-<h3>Grants</h3>
-<ul>
-{% for grant in site.data.grants %}
-<li>{{ grant.name }}</li>
-{% endfor %}
-</ul>
+{% for project in site.data.research %}
+<div class="section-card" markdown="0">
+<h2>{{ project.name }}</h2>
+{% if project.website or project.repo or project.docs or project.paper %}
+<div class="pub-actions" style="margin-bottom: var(--space-3);">
+{% if project.website %}<a href="{{ project.website }}" target="_blank" class="btn-pill btn-website">Website</a>{% endif %}
+{% if project.repo %}<a href="{{ project.repo }}" target="_blank" class="btn-pill btn-git">Code</a>{% endif %}
+{% if project.docs %}<a href="{{ project.docs }}" target="_blank" class="btn-pill btn-link">Docs</a>{% endif %}
+{% if project.paper %}<a href="{{ project.paper }}" target="_blank" class="btn-pill btn-link">Paper</a>{% endif %}
 </div>
 {% endif %}
+{% if project.authors %}<p><strong>Authors:</strong> <em>{{ project.authors }}</em></p>{% endif %}
+<p>{{ project.description }}</p>
+</div>
+{% endfor %}
 
-{% if site.data.awards %}
 <div class="section-card">
-<h3>Awards</h3>
-<ul>
-{% for award in site.data.awards %}
-<li>{{ award.name | replace: "-","&#8211;" }}</li>
-{% endfor %}
-</ul>
+  <h2>CV</h2>
+  <p>
+    <a href="/papers/Resume_Sunderland.pdf" target="_blank">
+      Download my CV (PDF)
+    </a>
+  </p>
+  <iframe
+    src="/papers/Resume_Sunderland.pdf"
+    width="100%"
+    height="700px"
+    style="border: none;">
+  </iframe>
 </div>
-{% endif %}
 
-{% if site.data.funders %}
-<div class="section-card">
-<h4>Sponsors</h4>
-<div class="sponsor-logos" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-6);">
-{% for funder in site.data.funders %}
-<a href="{{ funder.url }}" target="_blank"><img src="{{ funder.image | prepend: '/images/' | relative_url }}" alt="Funder logo" style="max-height: 80px; max-width: 200px; border-radius: 0;" loading="lazy"></a>
-{% endfor %}
-</div>
-</div>
-{% endif %}
+
+

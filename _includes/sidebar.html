@@ -1,6 +1,6 @@
 <div class="profile-card">
 <a href="{{ '/about' | relative_url }}">
-<img src="{{ site.photo | prepend: '/images/' | relative_url }}" class="profile-photo" alt="{{ site.name }}" width="140" height="140" fetchpriority="high">
+<img src="{{ site.photo | prepend: '/images/' | relative_url }}" class="profile-photo" alt="{{ site.name }}" width="200" height="200" fetchpriority="high">
 </a>
 <p class="profile-name">{{ site.name }}</p>
 <p class="profile-title">{{ site.title }}</p>
@@ -22,17 +22,4 @@
 {% endfor %}
 </ul>
 {% endif %}
-</div>
-
-<div class="section-card" style="margin-top: var(--space-6);">
-<h2 style="margin-top: 0; font-size: 1.125rem;">News</h2>
-<div class="news-timeline">
-{% for article in site.data.news limit:3 %}
-<div class="news-item">
-<div class="news-date">{{ article.date }}</div>
-<div class="news-headline">{{ article.headline }}</div>
-</div>
-{% endfor %}
-</div>
-<p style="margin-top: var(--space-4);"><a href="{{ '/allnews.html' | relative_url }}">See all news &rarr;</a></p>
 </div>

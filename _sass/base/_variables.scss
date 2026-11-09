@@ -6,7 +6,7 @@
   // Accent. Set `accent_color` in _config.yml (it overrides --accent-base);
   // every other accent variable is derived from it so light and dark mode
   // both stay readable whatever color is chosen.
-  --accent-base: #1a7a6d;
+  --accent-base: #ff5c00;
   --accent: var(--accent-base);
   --accent-hover: color-mix(in srgb, var(--accent-base) 82%, black);
   --accent-light: color-mix(in srgb, var(--accent-base) 8%, transparent);

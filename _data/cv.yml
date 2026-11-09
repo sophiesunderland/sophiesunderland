@@ -1,0 +1,6 @@
+# See README.md (Data Files) for the fields used in this file.
+# Talks, shown on the Talks page in the order listed (newest first is conventional).
+# Each entry needs: title, event, year
+# Optional: location, date (free text, e.g. "11 December"), type (invited or contributed;
+#           anything other than invited is listed as contributed), url, slides, video
+- file: "/papers/Resume_Sunderland.pdf"
